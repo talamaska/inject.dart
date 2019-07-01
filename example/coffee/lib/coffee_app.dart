@@ -10,6 +10,10 @@ import 'coffee_app.inject.dart' as $G;
 import 'src/drip_coffee_module.dart';
 import 'src/coffee_maker.dart';
 
+export 'src/coffee_maker.dart';
+export 'src/electric_heater.dart';
+export 'src/heater.dart';
+
 /// An example injector class.
 ///
 /// This injector uses [DripCoffeeModule] as a source of dependency providers.
