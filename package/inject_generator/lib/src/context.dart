@@ -2,17 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// TODO(yjbanov): clean up transitional analyzer API when final API is
-//                available. Transitional API is marked with <TRANSITIONAL_API>.
-//                See also: http://cl/219513934
-
 import 'dart:async';
 import 'package:analyzer/dart/analysis/results.dart';
-
-// <TRANSITIONAL_API>
-import 'package:analyzer/src/dart/analysis/results.dart';
-// </TRANSITIONAL_API>
-
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:build/build.dart' as build show log;
@@ -46,7 +37,7 @@ BuilderContext get builderContext {
   if (context == null) {
     throw new StateError(
       'No current $BuilderContext is active. Start your build function using '
-          '"runInContext" to be able to use "builderContext"',
+      '"runInContext" to be able to use "builderContext"',
     );
   }
   return context;
@@ -100,15 +91,14 @@ class BuilderLogger {
   }
 
   String _constructMessage(Element element, String message) {
-    // <TRANSITIONAL_API>
     ElementDeclarationResult elementDeclaration;
     if (element.kind != ElementKind.DYNAMIC) {
-      var parsedLibrary = ParsedLibraryResultImpl.tmp(element.library);
+      var parsedLibrary =
+          element.session.getParsedLibraryByElement(element.library);
       if (parsedLibrary.state == ResultState.VALID) {
         elementDeclaration = parsedLibrary.getElementDeclaration(element);
       }
     }
-    // </TRANSITIONAL_API>
     String sourceLocation;
     String source;
 
