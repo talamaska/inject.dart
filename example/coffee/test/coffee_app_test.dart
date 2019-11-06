@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:inject.example.coffee/src/drip_coffee_module.dart';
 import 'package:inject/inject.dart';
 import 'package:test/test.dart';
 
