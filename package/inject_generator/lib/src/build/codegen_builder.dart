@@ -292,7 +292,8 @@ class _InjectorBuilder {
   static String _lookupKeyName(LookupKey key) {
     final qualifier = key.qualifier
         .transform((symbolPath) => _camelCase(symbolPath.symbol))
-        .or('');
+        .orNull;
+
     final root = _camelCase(key.root.symbol);
     return '$qualifier$root';
   }
