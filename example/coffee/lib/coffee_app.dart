@@ -6,9 +6,13 @@ library inject.example.coffee;
 
 import 'package:inject/inject.dart';
 
-import 'coffee_app.inject.dart' as $G;
+import 'coffee_app.inject.dart' as $g;
 import 'src/drip_coffee_module.dart';
 import 'src/coffee_maker.dart';
+
+export 'src/coffee_maker.dart';
+export 'src/electric_heater.dart';
+export 'src/heater.dart';
 
 /// An example injector class.
 ///
@@ -17,7 +21,7 @@ import 'src/coffee_maker.dart';
 abstract class Coffee {
   /// A generated `async` static function, which takes a [DripCoffeeModule] and
   /// asynchronously returns an instance of [Coffee].
-  static final create = $G.Coffee$Injector.create;
+  static final create = $g.Coffee$Injector.create;
 
   /// An accessor to an object that an application may use.
   @provide
